@@ -53,6 +53,20 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+             <div className="text-center mt-10">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-5xl">Customize Your Product</h2>
+
+            <p className="mx-auto mt-4 max-w-sm text-gray-500">
+              Choose Your needed Gig and Start Earning Today with our outstanding Gigs.
+            </p>
+
+            <a
+              href="#"
+              className="mt-8 inline-block rounded-full border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:ring-3 focus:outline-hidden"
+            >
+              Get Started
+            </a>
+          </div>
         </>
     );
 };
