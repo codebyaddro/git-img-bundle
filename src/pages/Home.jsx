@@ -4,8 +4,8 @@ const Home = () => {
         <>
             <div className=" ">
                 <section className="bg-teal-50 lg:grid lg:h-screen lg:place-content-center">
-                    <div className="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-                        <div className="mx-auto max-w-prose text-center">
+                    <div className="mx-auto w-screen max-w-screen-xl flex justify-between items-center px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+                        <div className="mx-auto max-w-prose">
                             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
                                High-Quality <span className="text-green-600">Fiverr</span> Gig Images to 
                                 <strong className="text-indigo-600"> Boost </strong>
@@ -31,6 +31,9 @@ const Home = () => {
                                     Learn More
                                 </a>
                             </div>
+                        </div>
+                        <div>
+                            <img src="./images/undraw_social-dashboard_81sv.svg" alt="" />
                         </div>
                     </div>
                 </section>
