@@ -1,6 +1,6 @@
 const SignUp = () => {
   return (
-    <div className="max-w-lg mx-auto mt-32">
+    <div className="max-w-lg mx-auto mt-32 pb-20">
         <form className="space-y-6">
       <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
       
@@ -14,7 +14,7 @@ const SignUp = () => {
             name="first-name"
             type="text"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full px-4 py-2 border text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
             placeholder="John"
           />
         </div>
@@ -28,7 +28,7 @@ const SignUp = () => {
             name="last-name"
             type="text"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
             placeholder="Doe"
           />
         </div>
@@ -44,7 +44,7 @@ const SignUp = () => {
           type="email"
           autoComplete="email"
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 text-white  rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           placeholder="you@example.com"
         />
       </div>
@@ -58,7 +58,7 @@ const SignUp = () => {
           name="password"
           type="password"
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           placeholder="••••••••"
         />
         <p className="mt-1 text-xs text-gray-500">
@@ -75,7 +75,7 @@ const SignUp = () => {
           name="confirm-password"
           type="password"
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           placeholder="••••••••"
         />
       </div>

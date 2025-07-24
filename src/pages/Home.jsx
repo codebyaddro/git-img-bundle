@@ -56,7 +56,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-             <div className="text-center mt-10">
+             <div className="text-center mt-10 pb-20">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-5xl">Customize Your Product</h2>
 
             <p className="mx-auto mt-4 max-w-sm text-gray-500">

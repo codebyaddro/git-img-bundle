@@ -6,6 +6,8 @@ import CheckOut from "../pages/CheckOut";
 import SignUp from "../auth/SignUp";
 import Login from "../auth/Login";
 import Contact from "../pages/Contact";
+import MyAccount from "../pages/MyAccount";
+import CartPage from "../pages/CartPage";
 
 const MainRoutes = createBrowserRouter ([{
     path: '/',
@@ -24,6 +26,10 @@ const MainRoutes = createBrowserRouter ([{
             element: <CheckOut/>
         },
         {
+            path: '/cart',
+            element: <CartPage/>
+        },
+        {
             path: '/contact',
             element: <Contact/>
         },
@@ -34,6 +40,10 @@ const MainRoutes = createBrowserRouter ([{
         {
             path: '/login',
             element: <Login/>
+        },
+        {
+            path: '/myaccount',
+            element: <MyAccount/>
         },
     ]
 }]);

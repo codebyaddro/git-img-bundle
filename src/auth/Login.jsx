@@ -3,7 +3,7 @@ import { GrGoogle } from "react-icons/gr";
 
 const Login = () => {
   return (
-    <div className="max-w-lg mx-auto mt-32">
+    <div className="max-w-lg mx-auto mt-32 pb-20">
         <form className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
@@ -18,7 +18,7 @@ const Login = () => {
           type="email"
           autoComplete="email"
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full px-4 py-2 border text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           placeholder="you@example.com"
         />
       </div>
@@ -38,7 +38,7 @@ const Login = () => {
           type="password"
           autoComplete="current-password"
           required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+          className="w-full px-4 py-2 border text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
           placeholder="••••••••"
         />
       </div>
@@ -48,7 +48,7 @@ const Login = () => {
           id="remember-me"
           name="remember-me"
           type="checkbox"
-          className="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+          className="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded-md"
         />
         <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
           Remember me

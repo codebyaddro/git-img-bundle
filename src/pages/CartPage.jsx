@@ -1,251 +1,233 @@
+/* eslint-disable react/no-unescaped-entities */
+import { useState } from 'react';
+import { FiShoppingCart, FiTrash2, FiArrowLeft, FiCreditCard } from 'react-icons/fi';
+import { FaCcVisa, FaCcMastercard, FaCcPaypal } from 'react-icons/fa';
+import { NavLink } from 'react-router';
 
 const CartPage = () => {
-    return (
-        <div>
-            <section>
-                <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-                    <div className="mx-auto max-w-3xl">
-                        <header className="text-center">
-                            <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
-                        </header>
+  const [cartItems, setCartItems] = useState([
+    {
+      id: 1,
+      name: 'Advanced React E-book',
+      price: 29.99,
+      image: 'https://via.placeholder.com/80',
+      category: 'E-books',
+      author: 'React Experts',
+      fileType: 'PDF',
+      fileSize: '12.5 MB'
+    },
+    {
+      id: 2,
+      name: 'UI Design Templates Pack',
+      price: 19.99,
+      image: 'https://via.placeholder.com/80',
+      category: 'Design Assets',
+      author: 'Creative Studio',
+      fileType: 'ZIP (PSD, AI, SVG)',
+      fileSize: '45.2 MB'
+    },
+    {
+      id: 3,
+      name: 'JavaScript Masterclass Videos',
+      price: 49.99,
+      image: 'https://via.placeholder.com/80',
+      category: 'Video Courses',
+      author: 'JS Academy',
+      fileType: 'MP4',
+      fileSize: '3.2 GB'
+    }
+  ]);
 
-                        <div className="mt-8">
-                            <ul className="space-y-4">
-                                <li className="flex items-center gap-4">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                        alt=""
-                                        className="size-16 rounded-sm object-cover"
-                                    />
+  const [couponCode, setCouponCode] = useState('');
+  const [discount, setDiscount] = useState(0);
+  const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
 
-                                    <div>
-                                        <h3 className="text-sm text-gray-900">Basic Tee 6-Pack</h3>
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
+  const tax = subtotal * 0.1; // 10% tax
+  const total = subtotal + tax - discount;
 
-                                        <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
-                                            <div>
-                                                <dt className="inline">Size:</dt>
-                                                <dd className="inline">XXS</dd>
-                                            </div>
+  const removeItem = (id) => {
+    setCartItems(cartItems.filter(item => item.id !== id));
+  };
 
-                                            <div>
-                                                <dt className="inline">Color:</dt>
-                                                <dd className="inline">White</dd>
-                                            </div>
-                                        </dl>
-                                    </div>
+  const applyCoupon = () => {
+    if (!couponCode) return;
+    
+    setIsApplyingCoupon(true);
+    // Simulate API call
+    setTimeout(() => {
+      if (couponCode.toUpperCase() === 'SAVE20') {
+        setDiscount(subtotal * 0.2); // 20% discount
+        alert('Coupon applied successfully! 20% discount added.');
+      } else {
+        alert('Invalid coupon code');
+      }
+      setIsApplyingCoupon(false);
+    }, 1000);
+  };
 
-                                    <div className="flex flex-1 items-center justify-end gap-2">
-                                        <form>
-                                            <label htmlFor="Line1Qty" className="sr-only"> Quantity </label>
-
-                                            <input
-                                                type="number"
-                                                min="1"
-                                                value="1"
-                                                id="Line1Qty"
-                                                className="h-8 w-12 rounded-sm border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                            />
-                                        </form>
-
-                                        <button className="text-gray-600 transition hover:text-red-600">
-                                            <span className="sr-only">Remove item</span>
-
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth="1.5"
-                                                stroke="currentColor"
-                                                className="size-4"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </li>
-
-                                <li className="flex items-center gap-4">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                        alt=""
-                                        className="size-16 rounded-sm object-cover"
-                                    />
-
-                                    <div>
-                                        <h3 className="text-sm text-gray-900">Basic Tee 6-Pack</h3>
-
-                                        <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
-                                            <div>
-                                                <dt className="inline">Size:</dt>
-                                                <dd className="inline">XXS</dd>
-                                            </div>
-
-                                            <div>
-                                                <dt className="inline">Color:</dt>
-                                                <dd className="inline">White</dd>
-                                            </div>
-                                        </dl>
-                                    </div>
-
-                                    <div className="flex flex-1 items-center justify-end gap-2">
-                                        <form>
-                                            <label htmlFor="Line2Qty" className="sr-only"> Quantity </label>
-
-                                            <input
-                                                type="number"
-                                                min="1"
-                                                value="1"
-                                                id="Line2Qty"
-                                                className="h-8 w-12 rounded-sm border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                            />
-                                        </form>
-
-                                        <button className="text-gray-600 transition hover:text-red-600">
-                                            <span className="sr-only">Remove item</span>
-
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth="1.5"
-                                                stroke="currentColor"
-                                                className="size-4"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </li>
-
-                                <li className="flex items-center gap-4">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                        alt=""
-                                        className="size-16 rounded-sm object-cover"
-                                    />
-
-                                    <div>
-                                        <h3 className="text-sm text-gray-900">Basic Tee 6-Pack</h3>
-
-                                        <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
-                                            <div>
-                                                <dt className="inline">Size:</dt>
-                                                <dd className="inline">XXS</dd>
-                                            </div>
-
-                                            <div>
-                                                <dt className="inline">Color:</dt>
-                                                <dd className="inline">White</dd>
-                                            </div>
-                                        </dl>
-                                    </div>
-
-                                    <div className="flex flex-1 items-center justify-end gap-2">
-                                        <form>
-                                            <label htmlFor="Line3Qty" className="sr-only"> Quantity </label>
-
-                                            <input
-                                                type="number"
-                                                min="1"
-                                                value="1"
-                                                id="Line3Qty"
-                                                className="h-8 w-12 rounded-sm border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                            />
-                                        </form>
-
-                                        <button className="text-gray-600 transition hover:text-red-600">
-                                            <span className="sr-only">Remove item</span>
-
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth="1.5"
-                                                stroke="currentColor"
-                                                className="size-4"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
-                                <div className="w-screen max-w-lg space-y-4">
-                                    <dl className="space-y-0.5 text-sm text-gray-700">
-                                        <div className="flex justify-between">
-                                            <dt>Subtotal</dt>
-                                            <dd>£250</dd>
-                                        </div>
-
-                                        <div className="flex justify-between">
-                                            <dt>VAT</dt>
-                                            <dd>£25</dd>
-                                        </div>
-
-                                        <div className="flex justify-between">
-                                            <dt>Discount</dt>
-                                            <dd>-£20</dd>
-                                        </div>
-
-                                        <div className="flex justify-between !text-base font-medium">
-                                            <dt>Total</dt>
-                                            <dd>£200</dd>
-                                        </div>
-                                    </dl>
-
-                                    <div className="flex justify-end">
-                                        <span
-                                            className="inline-flex items-center justify-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-700"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth="1.5"
-                                                stroke="currentColor"
-                                                className="-ms-1 me-1.5 size-4"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z"
-                                                />
-                                            </svg>
-
-                                            <p className="text-xs whitespace-nowrap">2 Discounts Applied</p>
-                                        </span>
-                                    </div>
-
-                                    <div className="flex justify-end">
-                                        <a
-                                            href="#"
-                                            className="block rounded-sm bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
-                                        >
-                                            Checkout
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  return (
+    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 mt-20">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col gap-4 mb-8">
+          <NavLink to='/products' className="flex items-center text-teal-600  mr-4">
+            <FiArrowLeft className="mr-1" /> Continue Shopping
+          </NavLink>
+          <h1 className="text-3xl font-bold text-gray-900 flex items-center">
+            <FiShoppingCart className="mr-3" /> Your Cart
+          </h1>
         </div>
-    );
+
+        {cartItems.length === 0 ? (
+          <div className="bg-white shadow rounded-lg p-8 text-center">
+            <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+              <FiShoppingCart className="text-gray-400 text-3xl" />
+            </div>
+            <h2 className="text-xl font-medium text-gray-900 mb-2">Your cart is empty</h2>
+            <p className="text-gray-500 mb-6">Looks like you haven't added any digital products yet.</p>
+            <button className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+              Browse Products
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Cart Items */}
+            <div className="lg:w-2/3">
+              <div className="bg-teal-50 shadow rounded-lg overflow-hidden">
+                <div className="p-6 border-b border-gray-400">
+                  <h2 className="text-lg font-medium text-gray-900">
+                    {cartItems.length} {cartItems.length === 1 ? 'Item' : 'Items'} in Cart
+                  </h2>
+                </div>
+
+                <div className="divide-y divide-gray-400">
+                  {cartItems.map((item) => (
+                    <div key={item.id} className="p-6 flex flex-col sm:flex-row">
+                      <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-6">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-20 h-20 object-cover rounded-md"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between">
+                          <div>
+                            <h3 className="text-lg font-medium text-gray-900">{item.name}</h3>
+                            <p className="text-sm text-gray-500">{item.category} by {item.author}</p>
+                          </div>
+                          <button
+                            onClick={() => removeItem(item.id)}
+                            className="text-gray-400 hover:text-red-500"
+                          >
+                            <FiTrash2 />
+                          </button>
+                        </div>
+                        <div className="mt-2 grid grid-cols-2 gap-2 text-sm text-gray-500">
+                          <div>
+                            <span className="font-medium">Format:</span> {item.fileType}
+                          </div>
+                          <div>
+                            <span className="font-medium">Size:</span> {item.fileSize}
+                          </div>
+                        </div>
+                        <div className="mt-4 flex justify-between items-center">
+                          <div className="text-lg font-bold text-gray-900">
+                            ${item.price.toFixed(2)}
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <span className="text-sm text-gray-500">Instant download</span>
+                            <span className="inline-block h-2 w-2 rounded-full bg-green-400"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Order Summary */}
+            <div className="lg:w-1/3">
+              <div className="bg-teal-50 shadow rounded-lg p-6 sticky top-4">
+                <h2 className="text-lg font-medium text-gray-900 mb-4">Order Summary</h2>
+
+                <div className="mb-6">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-gray-900">${subtotal.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-gray-600">Tax (10%)</span>
+                    <span className="text-gray-900">${tax.toFixed(2)}</span>
+                  </div>
+                  {discount > 0 && (
+                    <div className="flex justify-between mb-2">
+                      <span className="text-gray-600">Discount</span>
+                      <span className="text-green-600">-${discount.toFixed(2)}</span>
+                    </div>
+                  )}
+                  <div className="border-t border-gray-200 my-3"></div>
+                  <div className="flex justify-between text-lg font-bold">
+                    <span>Total</span>
+                    <span>${total.toFixed(2)}</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <label htmlFor="coupon" className="block text-sm font-medium text-gray-700 mb-1">
+                    Coupon Code
+                  </label>
+                  <div className="flex">
+                    <input
+                      type="text"
+                      id="coupon"
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none text-black bg-white"
+                      placeholder="Enter coupon"
+                      value={couponCode}
+                      onChange={(e) => setCouponCode(e.target.value)}
+                    />
+                    <button
+                      onClick={applyCoupon}
+                      disabled={isApplyingCoupon}
+                      className="px-4 py-2 bg-teal-600 text-white rounded-r-md hover:bg-teal-700 disabled:bg-indigo-400"
+                    >
+                      {isApplyingCoupon ? 'Applying...' : 'Apply'}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <h3 className="text-sm font-medium text-gray-700 mb-2">Secure Payment</h3>
+                  <div className="flex space-x-4 mb-4">
+                    <FaCcVisa className="text-gray-400 text-2xl" />
+                    <FaCcMastercard className="text-gray-400 text-2xl" />
+                    <FaCcPaypal className="text-gray-400 text-2xl" />
+                  </div>
+                  <p className="text-xs text-gray-500">
+                    Your payment is secured with 256-bit SSL encryption. We dont store your credit card details.
+                  </p>
+                </div>
+
+                <NavLink to='/checkout' className="w-full flex items-center justify-center px-6 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700">
+                  <FiCreditCard className="mr-2" />
+                  Proceed to Checkout
+                </NavLink>
+
+                <p className="mt-4 text-center text-sm text-gray-500">
+                  By completing your purchase, you agree to our{' '}
+                  <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                    Terms of Service
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default CartPage;
