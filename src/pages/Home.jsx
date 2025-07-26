@@ -16,7 +16,7 @@ const Home = () => {
                                Stand out from the crowd with professionally designed gig thumbnails that grab attention and drive more clicks. Perfect for freelancers in every niche.
                             </p>
 
-                            <div className="mt-4 flex justify-center gap-4 sm:mt-6">
+                            <div className="mt-4 flex justify-evenly gap-4 sm:mt-6">
                                 <a
                                     className="inline-block rounded border border-teal-100 bg-teal-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-teal-800"
                                     href="#"
@@ -25,7 +25,7 @@ const Home = () => {
                                 </a>
 
                                 <a
-                                    className="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
+                                    className="inline-block rounded border border-teal-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-teal-300 hover:text-gray-900"
                                     href="#"
                                 >
                                     Learn More

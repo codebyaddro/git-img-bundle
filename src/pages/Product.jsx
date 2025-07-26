@@ -35,6 +35,7 @@ const Product = () => {
                     <div className="mt-4 lg:mt-8 lg:grid lg:grid-cols-3 lg:items-start lg:gap-3">
                         
                         {/* Gig image card 1 */}
+                        
                         <div className="">
                             <div>
                                 <img src="./gig-img/bundle-1.png" alt="" />
