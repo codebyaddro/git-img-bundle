@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 
 const Home = () => {
     return (
@@ -17,12 +18,12 @@ const Home = () => {
                             </p>
 
                             <div className="mt-4 flex justify-evenly gap-4 sm:mt-6">
-                                <a
+                                <NavLink 
                                     className="inline-block rounded border border-teal-100 bg-teal-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-teal-800"
-                                    href="#"
+                                    to="/products"
                                 >
                                     Browse Images
-                                </a>
+                                </NavLink>
 
                                 <a
                                     className="inline-block rounded border border-teal-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-teal-300 hover:text-gray-900"
