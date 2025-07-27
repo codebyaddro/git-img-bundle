@@ -8,6 +8,7 @@ import Login from "../auth/Login";
 import Contact from "../pages/Contact";
 import MyAccount from "../pages/MyAccount";
 import CartPage from "../pages/CartPage";
+import DownloadPage from "../pages/DownloadPage";
 
 const MainRoutes = createBrowserRouter ([{
     path: '/',
@@ -28,6 +29,10 @@ const MainRoutes = createBrowserRouter ([{
         {
             path: '/cart',
             element: <CartPage/>
+        },
+        {
+            path: '/download',
+            element: <DownloadPage/>
         },
         {
             path: '/contact',

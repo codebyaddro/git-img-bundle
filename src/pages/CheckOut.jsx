@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { FaLock, } from 'react-icons/fa';
 
+
+
+/* if user paid the ammount , he will be redirected to DownloadPage */
+
 const CheckOut = () => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setCardNumber] = useState('');
